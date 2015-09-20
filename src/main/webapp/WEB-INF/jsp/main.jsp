@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="Volodymyr">
 
-  <title>Market application</title>
+  <title>Best Market application</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link href="/resources/css/sidebar.css" rel="stylesheet">
@@ -41,7 +41,7 @@
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
-        <a href="#">Market</a>
+        <a href="#">Best Market application</a>
       </li>
       <li>
         <a href="#" onclick="showCustomerPage()">Customers</a>

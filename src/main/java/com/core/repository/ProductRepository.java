@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,10 +36,10 @@ public class ProductRepository {
     @Transactional
     public List<Product> getAllProducts() {
         String strQuery = "from Product";
-        List<Product> productList = sessionFactory.getCurrentSession().createQuery(strQuery).list();
-        if (productList == null) {
-            return null;
-        }
+        List<Product> productList = new ArrayList<>();
+        try {
+            productList.addAll(sessionFactory.getCurrentSession().createQuery(strQuery).list());
+        } catch (Exception ignore) {}
         return productList;
     }
 
