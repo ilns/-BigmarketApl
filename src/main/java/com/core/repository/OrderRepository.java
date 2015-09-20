@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +31,11 @@ public class OrderRepository {
     }
 
     @Transactional
+    public Order getById(long id) {
+        return (Order) sessionFactory.getCurrentSession().get(Order.class, id);
+    }
+
+    @Transactional
     public boolean deleteById(long id) {
         Session session = (Session) sessionFactory.getCurrentSession();
         Order toDelete = (Order) session.load(Order.class, id);
@@ -41,10 +47,11 @@ public class OrderRepository {
     @Transactional
     public List<Order> getAllOrders() {
         String strQuery = "from Order";
-        List<Order> orderList = sessionFactory.getCurrentSession().createQuery(strQuery).list();
-        if (orderList == null) {
-            return null;
-        }
+        List orderList = new ArrayList<>();
+        try{
+            orderList.addAll(sessionFactory.getCurrentSession().createQuery(strQuery).list());
+        } catch (Exception ignore) {}
+
         return orderList;
     }
 }

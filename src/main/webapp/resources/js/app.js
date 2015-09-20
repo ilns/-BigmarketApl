@@ -1,3 +1,4 @@
+
 var pageContent;
 $(document).ready(function(){
 
@@ -5,47 +6,16 @@ $(document).ready(function(){
 
 });
 
-// customer
-function showCustomerPage() {
-    $.get('customers', function (data) {
-        loadHTML(data);
-    });
-}
+$(document).ready(function(){
 
-function showAddCustomerPage() {
-    $.get('add-customer', function (data) {
-        loadHTML(data);
-    });
-}
-//product
-function showProductPage() {
-    $.get('products', function (data) {
-        loadHTML(data);
+    $('.e_nav').click(function(e){
+        var path = $(e.target).data('path') || '/';
+        $.get(path, function (html) {
+            $('#page-content-wrapper').html(html);
+        });
+        return false;
     });
 
-}
+});
 
-
-function showAddProductPage() {
-    $.get('add-product', function (data) {
-        loadHTML(data);
-    });
-}
-
-//order
-function showOrderPage() {
-    $.get('orders', function (data) {
-        loadHTML(data);
-    });
-}
-
-function showAddOrderPage() {
-    $.get('add-order', function (data) {
-        loadHTML(data);
-    });
-}
-
-function loadHTML(html) {
-    pageContent.html(html);
-}
 

@@ -39,7 +39,9 @@ function submitOrder() {
         type: 'POST',
         data: data,
         success: function () {
-            showOrderPage();
+            $.get('orders', function (data) {
+                pageContent.html(data);
+            });
         },
         error: function (e) {
             console.error('Whoa, error', e);

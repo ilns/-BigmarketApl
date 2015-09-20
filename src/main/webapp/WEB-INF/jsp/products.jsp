@@ -1,19 +1,9 @@
-<script type="text/javascript">
-
-    // init variables
-    var $table = $('#productsTable');
-    var $button = $('#button');
-
-    $table.bootstrapTable(); //init table
-    $button.on('click', removeProduct); //add event
-
-</script>
 
 
 
 <div class="container">
 
-    <button type="button" onclick="showAddProductPage()">Create new product</button>
+    <button type="button"  data-path="add-product" class="e_btn">Create new product</button>
 
     <div id="toolbar">
         <button id="button" onclick="removeProduct" class="btn btn-default">remove</button>
@@ -29,6 +19,27 @@
         </thead>
     </table>
 </div>
+
+<script type="text/javascript">
+
+    // init variables
+    var $table = $('#productsTable');
+    var $button = $('#button');
+
+    $table.bootstrapTable(); //init table
+    $button.on('click', removeProduct); //add event
+
+    $('.e_btn').click(function(e){
+        console.log('click')
+        var path = $(e.target).data('path') || '/';
+        $.get(path, function (html) {
+            $('#page-content-wrapper').html(html);
+        });
+        return false;
+    });
+
+</script>
+
 
 
 

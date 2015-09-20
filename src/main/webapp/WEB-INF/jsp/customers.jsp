@@ -16,14 +16,22 @@
   $table.bootstrapTable(); //init table
   $button.on('click', removeCustomer); //add event
 
+  $('.e_btn').click(function(e){
+    var path = $(e.target).data('path') || '/';
+    $.get(path, function (html) {
+      $('#page-content-wrapper').html(html);
+    });
+    return false;
+  });
+
 </script>
 
 <div class="container">
 
-  <button type="button" onclick="showAddCustomerPage()">Create new customer</button>
+  <button type="button" data-path="add-customer" class="e_btn">Create new customer</button>
 
   <div id="toolbar">
-    <button id="button" onclick="removeCustomer" class="btn btn-default">remove</button>
+    <button id="button"  onclick="removeCustomer" class="btn btn-default">remove</button>
   </div>
 
   <table id="customerTable" data-toggle="table" data-toolbar="#toolbar" data-url="/customers.json" data-click-to-select="true">

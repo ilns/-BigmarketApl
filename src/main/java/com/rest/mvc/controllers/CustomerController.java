@@ -27,7 +27,7 @@ public class CustomerController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/add-customer", method = RequestMethod.POST)
-    public @ResponseBody String addNewContract( @RequestParam("firstName") String firstName,
+    public @ResponseBody String addNewCustomer( @RequestParam("firstName") String firstName,
                                                 @RequestParam("lastName") String lastName,
                                                 @RequestParam("city") String city,
                                                 @RequestParam("street") String street,
@@ -42,7 +42,7 @@ public class CustomerController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/delete-customer", method = RequestMethod.POST)
-    public @ResponseBody String deleteContact(
+    public @ResponseBody String deleteCustomer(
             @RequestParam(value = "customerIds", required = true) String customerIds){
 
         String[] contactIdsArr = customerIds.split(",");

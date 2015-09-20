@@ -2,11 +2,13 @@ package com.core.repository;
 
 
 import com.core.models.Customer;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,17 +38,21 @@ public class CustomerRepository  {
     }
 
 
-    public void deleteCustomerById(long id) {
-
+    public boolean deleteCustomerById(long id) {
+        Session session = (Session) sessionFactory.getCurrentSession();
+        Customer toDelete = (Customer) session.load(Customer.class, id);
+        session.delete(toDelete);
+        return true;
     }
 
     @Transactional
     public List<Customer> getAllCustomer() {
         String strQuery = "from Customer";
-        List<Customer> contactList = sessionFactory.getCurrentSession().createQuery(strQuery).list();
-        if (contactList == null) {
-            return null;
-        }
+        List<Customer> contactList = new ArrayList<>();
+        try{
+            contactList.addAll(sessionFactory.getCurrentSession().createQuery(strQuery).list());
+        } catch (Exception ignore) {}
+
         return contactList;
     }
 }

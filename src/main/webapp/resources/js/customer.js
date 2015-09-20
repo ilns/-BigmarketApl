@@ -29,7 +29,9 @@ function submitCustomer() {
         type: 'post',
         data: $("#addNewCustomer").serializeArray(),
         success: function () {
-            showCustomerPage();
+            $.get('customers', function (data) {
+                pageContent.html(data);
+            });
         },
         error: function (e) {
             console.error('Whoa, error', e);

@@ -28,7 +28,9 @@ public class Product {
     public Product(BigDecimal price, String productName) {
         this.price = price;
         this.productName = productName;
-//        this.quantity = quantity;
+    }
+    public Product(BigDecimal price) {
+        this.price = price;
     }
 
     public long getId() {

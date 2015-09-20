@@ -29,7 +29,9 @@ function submitProduct() {
         type: 'post',
         data: $("#addNewProduct").serializeArray(),
         success: function () {
-            showProductPage();
+            $.get('products', function (data) {
+                pageContent.html(data);
+            });
         },
         error: function (e) {
             console.error('Whoa, error', e);

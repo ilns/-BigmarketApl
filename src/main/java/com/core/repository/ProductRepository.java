@@ -1,6 +1,7 @@
 package com.core.repository;
 
 import com.core.models.Product;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,12 +35,21 @@ public class ProductRepository {
     }
 
     @Transactional
+    public  boolean deleteProductById(Long id){
+        Session session = (Session) sessionFactory.getCurrentSession();
+        Product toDelete = (Product) session.load(Product.class, id);
+        session.delete(toDelete);
+        return true;
+    }
+
+    @Transactional
     public List<Product> getAllProducts() {
         String strQuery = "from Product";
         List<Product> productList = new ArrayList<>();
         try {
             productList.addAll(sessionFactory.getCurrentSession().createQuery(strQuery).list());
         } catch (Exception ignore) {}
+        
         return productList;
     }
 

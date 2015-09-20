@@ -41,6 +41,10 @@ public class Customer {
         this.numbHouse = numbHouse;
 
     }
+    public Customer(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public String getCity() {
         return city;

@@ -27,20 +27,19 @@ public class ProductController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/add-product", method = RequestMethod.POST)
-    public @ResponseBody String addNewContract( @RequestParam("price") String price,
+    public @ResponseBody String addNewProduct( @RequestParam("price") String price,
                                                 @RequestParam("productName") String productName) {
 
         Product product = null;
         BigDecimal priceb = new BigDecimal(price);
         product = new Product(priceb,productName);
-
         productRepository.addOrUpdateProduct(product);
         return "product add";
     }
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/delete-product", method = RequestMethod.POST)
-    public @ResponseBody String deleteContact(
+    public @ResponseBody String deleteProduct(
             @RequestParam(value = "productIds", required = true) String productIds){
 
         String[] productIdsArr = productIds.split(",");

@@ -11,6 +11,7 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link href="/resources/css/sidebar.css" rel="stylesheet">
+  <link href="/resources/css/app.css" rel="stylesheet">
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-git2.js"></script>
   <script type="text/javascript" src="/resources/js/app.js"></script>
@@ -30,6 +31,7 @@
 
   <!-- table plugin -->
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">
+
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/locale/bootstrap-table-zh-CN.min.js"></script>
 </head>
@@ -41,18 +43,18 @@
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
-        <a href="#">Best Market application</a>
+        <a data-path="/" class="e_nav" >Best Market application</a>
       </li>
       <li>
-        <a href="#" onclick="showCustomerPage()">Customers</a>
-      </li>
-
-      <li>
-        <a href="#" onclick="showProductPage()">Products</a>
+        <a  data-path="customers" class="e_nav" >Customers</a>
       </li>
 
       <li>
-        <a href="#" onclick="showOrderPage()">Order</a>
+        <a  data-path="products" class="e_nav" >Products</a>
+      </li>
+
+      <li>
+        <a data-path="orders" class="e_nav" >Order</a>
       </li>
 
     </ul>
@@ -65,10 +67,8 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-          <h1>This is main Page</h1>
-          <p>On side bar you can see what you may to do</p>
-          <p>lets bay</p>
-          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+          <h1>Best Market application</h1>
+          <p>You can create customers, products and make orders</p>
         </div>
       </div>
     </div>
@@ -76,14 +76,6 @@
   </div>
 
 </div>
-
-<!-- Menu Toggle Script -->
-<script>
-  $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  });
-</script>
 
 </body>
 </html>

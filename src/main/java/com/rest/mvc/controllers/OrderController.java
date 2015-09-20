@@ -42,7 +42,7 @@ public class OrderController {
 
         Customer customer = customerRepository.getById(Long.parseLong(customerId));
         String [] productIdsArr = productIds.split(",");
-        List<Product> products = new ArrayList<Product>();
+        List<Product> products = new ArrayList<>();
         for(String productId: productIdsArr) {
             products.add(productRepository.getById(Long.parseLong(productId)));
         }
@@ -56,7 +56,7 @@ public class OrderController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/delete-order", method = RequestMethod.POST)
-    public @ResponseBody String deleteContact(
+    public @ResponseBody String deleteOrder(
             @RequestParam(value = "orderIds", required = true) String orderIds){
 
         String[] orderIdsArr = orderIds.split(",");

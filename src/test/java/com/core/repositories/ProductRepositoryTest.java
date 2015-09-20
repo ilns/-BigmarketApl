@@ -2,6 +2,7 @@ package com.core.repositories;
 
 import com.core.models.Product;
 import com.core.repository.ProductRepository;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,15 +13,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 
+
 import java.math.BigDecimal;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
-/**
- * Created by Chris on 7/9/14.
- */
+import static org.junit.Assert.*;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring/context-config.xml")
 public class ProductRepositoryTest {
@@ -58,5 +56,13 @@ public class ProductRepositoryTest {
     public void testDeleteProduct() {
         repo.deleteProduct(product);
         assertTrue(repo.getAllProducts().size() == 0);
+    }
+
+
+    @Test
+    @Transactional
+    public void testFindProductEquals() {
+        Product retrivedProduct = repo.getById(1);
+        Assert.assertEquals(product, retrivedProduct);
     }
 }

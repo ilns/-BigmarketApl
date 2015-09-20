@@ -22,12 +22,19 @@
     }
     return allProducts;
   }
+  $('.e_btn').click(function(e){
+    var path = $(e.target).data('path') || '/';
+    $.get(path, function (html) {
+      $('#page-content-wrapper').html(html);
+    });
+    return false;
+  });
 
 </script>
 
 <div class="container">
 
-  <button type="button" onclick="showAddOrderPage()">Create new order</button>
+  <button type="button"  data-path="add-order" class="e_btn">Create new order</button>
 
   <div id="toolbar">
     <button id="button" onclick="removeOrder" class="btn btn-default">remove</button>
